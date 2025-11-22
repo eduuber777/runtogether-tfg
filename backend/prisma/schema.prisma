@@ -1,0 +1,126 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(auto()) @map("_id") @db.ObjectId
+  email         String         @unique
+  password      String
+  firstName     String
+  lastName      String?
+  role          Role           @default(USER)
+  avatar        String?
+  bio           String?
+  dateOfBirth   DateTime?
+  phone         String?
+  emailVerified Boolean        @default(false)
+  isActive      Boolean        @default(true)
+  lastLogin     DateTime?
+  preferences   Json?
+  stats         Json?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+
+  events        Event[]        @relation("EventOrganizer")
+  registrations Registration[]
+
+  @@map("users")
+}
+
+model Event {
+  id              String         @id @default(auto()) @map("_id") @db.ObjectId
+  title           String
+  description     String
+  organizerId     String         @db.ObjectId
+  eventType       EventType      @default(RACE)
+  date            DateTime
+  location        Json
+  maxParticipants Int?
+  distance        Float?
+  difficulty      Difficulty     @default(MEDIUM)
+  price           Float          @default(0)
+  images          String[]
+  tags            String[]
+  requirements    Json?
+  amenities       String[]
+  terrain         Json?
+  paceGroups      Json[]
+  objectives      String[]
+  route           Json?
+  status          EventStatus    @default(PUBLISHED)
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+
+  organizer       User           @relation("EventOrganizer", fields: [organizerId], references: [id])
+  registrations   Registration[]
+
+  @@map("events")
+}
+
+model Registration {
+  id              String             @id @default(auto()) @map("_id") @db.ObjectId
+  userId          String             @db.ObjectId
+  eventId         String             @db.ObjectId
+  status          RegistrationStatus @default(CONFIRMED)
+  paymentStatus   PaymentStatus      @default(PENDING)
+  emergencyContact Json?
+  medicalInfo     Json?
+  tshirtSize      String?
+  createdAt       DateTime           @default(now())
+  updatedAt       DateTime           @updatedAt
+
+  user            User               @relation(fields: [userId], references: [id])
+  event           Event              @relation(fields: [eventId], references: [id])
+
+  @@unique([userId, eventId])
+  @@map("registrations")
+}
+
+enum Role {
+  USER
+  ORGANIZER
+  ADMIN
+}
+
+enum EventType {
+  RACE
+  TRAINING
+  SOCIAL
+  TRAIL
+  MARATHON
+  HALF_MARATHON
+  ULTRA
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+  EXPERT
+}
+
+enum EventStatus {
+  DRAFT
+  PUBLISHED
+  CANCELLED
+  COMPLETED
+}
+
+enum RegistrationStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  WAITLIST
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  REFUNDED
+  FAILED
+}
