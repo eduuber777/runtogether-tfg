@@ -1,80 +1,69 @@
-# 🏃 RunTogether - TFG UOC 2025
+# 🏃 RunTogether
 
-Plataforma web completa para la gestión de eventos de running. Proyecto académico desarrollado para el Trabajo Final de Grado de Ingeniería Informática.
+> Plataforma web para la gestión de eventos de running
 
-## 📦 Contenido del Proyecto
+[![React](https://img.shields.io/badge/React-18-blue)](https://reactjs.org/)
+[![Node.js](https://img.shields.io/badge/Node.js-18+-green)](https://nodejs.org/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-6+-green)](https://www.mongodb.com/)
 
-- ✅ **Frontend (PEC3)** - React + Vite + Tailwind CSS
-- ✅ **Backend (PEC2)** - Node.js + Express + Prisma + MongoDB
-- ✅ **Listo para Netlify** - Configuración incluida
+## 🎓 Proyecto Académico
 
-## 🚀 Inicio Rápido
+Trabajo Final de Grado - Ingeniería Informática  
+Universidad Oberta de Catalunya (UOC) - 2025
 
-### Opción 1: Ejecutar Localmente
+## ✨ Características
 
-**Backend:**
+- 🔐 Autenticación JWT
+- 📅 Gestión de eventos de running
+- 🏃 Sistema de inscripciones
+- 👥 Roles (Organizador/Corredor)
+- 📱 Diseño responsive
+- 🎨 UI moderna con Tailwind CSS
+
+## 🚀 Instalación
+
+### Backend
+
 ```bash
 cd backend
 npm install
 cp .env.example .env
-# Edita .env con tus credenciales de MongoDB
 npx prisma generate
 npm run dev
 ```
 
-**Frontend:**
+### Frontend
+
 ```bash
 cd frontend
 npm install
 cp .env.example .env
-# Edita .env con la URL de tu backend
 npm run dev
 ```
 
-### Opción 2: Desplegar en Netlify
-
-Ver instrucciones detalladas en `INSTRUCCIONES_DESPLIEGUE.md`
-
-## ✨ Funcionalidades
-
-- 🔐 Autenticación de usuarios (JWT)
-- 📅 Creación y gestión de eventos
-- 🏃 Inscripción a eventos
-- 👤 Gestión de perfil
-- 📱 Diseño responsive
-- 🎨 Interfaz moderna con Tailwind CSS
-
-## 🛠️ Tecnologías
+## 🛠️ Stack Tecnológico
 
 **Frontend:**
 - React 18
 - Vite
-- React Router DOM
 - Tailwind CSS
+- React Router DOM
 
 **Backend:**
-- Node.js
-- Express
+- Node.js + Express
 - Prisma ORM
 - MongoDB
 - JWT + bcryptjs
 
 ## 📚 Documentación
 
-- `INSTRUCCIONES_DESPLIEGUE.md` - Guía completa de despliegue
-- `frontend/README.md` - Documentación del frontend
-- `backend/README.md` - Documentación del backend
+- [Frontend README](./frontend/README.md)
+- [Backend README](./backend/README.md)
 
 ## 👨‍💻 Autor
 
-**Eduard Berlanga**  
-Trabajo Final de Grado - Ingeniería Informática  
-Universidad Oberta de Catalunya (UOC) - 2025
+Eduard Berlanga - [@eduuber777](https://github.com/eduuber777)
 
 ## 📄 Licencia
 
-Proyecto académico - MIT License
-
----
-
-¿Listo para correr? 🏃‍♂️💨
+MIT License - Proyecto Académico
