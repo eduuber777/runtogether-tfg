@@ -37,14 +37,6 @@ La aplicación estará disponible en `http://localhost:5173`
 npm run build
 ```
 
-## 🌐 Despliegue en Netlify
-
-1. Conecta tu repositorio con Netlify
-2. Configura las variables de entorno:
-   - `VITE_API_URL`: URL de tu backend
-3. El archivo `netlify.toml` ya está configurado
-4. Deploy automático
-
 ## 📁 Estructura
 
 ```
